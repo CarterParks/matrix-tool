@@ -1,17 +1,32 @@
 import java.util.Scanner;
 
 public class matrix {
-    private String AInp;
-    public double[][] matrix;
-    matrix(String name){
-        System.out.println("[[2,3],[4,5]] = 2_3>4_5 | Underscore separates entries, > separates rows");// Replace with 'help'
-        System.out.print("Input matrix: ");
+    private String matInp;
+    public double[][] values;
+    public String name;
+    public int rowNum;
+    public int colNum;
+    matrix(){
         Scanner sc = new Scanner(System.in);
-        AInp = sc.nextLine();
-        matrixParse();
+
+        System.out.print("Input matrix label: ");
+        name = sc.nextLine();
+
+        while(true) {
+            System.out.print("Input matrix: ");
+            matInp = sc.nextLine();
+            if (matInp.equals("help")) {
+                System.out.println("[[2,3],[4,5]] = 2_3>4_5 | Underscore separates entries, > separates rows");
+            } else {
+                matrixParse();
+                break;
+            }
+        }
+        rowNum = values.length;
+        colNum = values[0].length;
     }
     private void matrixParse(){
-        String[] rows = this.AInp.split(">");
+        String[] rows = this.matInp.split(">");
         int cols = 1 + (int) rows[0].codePoints().filter(ch -> ch == '_').count();
 
         double[][] mat = new double[rows.length][cols];
@@ -28,6 +43,6 @@ public class matrix {
             mat[rowN] = matRow;
         }
 
-        this.matrix = mat;
+        this.values = mat.clone();
     }
 }

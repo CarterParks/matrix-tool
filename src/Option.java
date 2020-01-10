@@ -3,13 +3,33 @@ import java.io.IOException;
 
 
 
-abstract class Option {
+public abstract class Option {
     public abstract void call() throws IOException, InterruptedException;
     public abstract String name();
     public static void clear() {
-        System.out.print("Press Any key to return to Menu: ");
+        System.out.print("Press any key to return to menu: ");
         new Scanner(System.in).nextLine();
         System.out.println();
+    }
+}
+
+class matrixChoose extends Option{
+    public String name(){
+        return "Change Matrix";
+    }
+    public void call() {
+        tool.current = tool.chooser();
+        clear();
+    }
+}
+
+class matrixNew extends Option{
+    public String name(){
+        return "New Matrix";
+    }
+    public void call() {
+        tool.matrices.add(new matrix());
+        clear();
     }
 }
 
@@ -49,15 +69,6 @@ class matrixScalar extends Option{
     }
 }
 
-class matrixChange extends Option{
-    public String name(){
-        return "Change";
-    }
-    public void call() {
-        clear();
-    }
-}
-
 class view extends Option{
     @Override
     public String name() {
@@ -66,6 +77,12 @@ class view extends Option{
 
     @Override
     public void call() {
+        double[][] work = tool.current.values;
+        for (double[] row : work) {
+            for (double entry : row)
+                System.out.print(" " + entry);
+            System.out.println();
+        }
         clear();
     }
 
