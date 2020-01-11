@@ -3,14 +3,14 @@ import java.util.Scanner;
 public class matrix {
     private String matInp;
     public double[][] values;
-    public String name;
+    public String label;
     public int rowNum;
     public int colNum;
     matrix(){
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Input matrix label: ");
-        name = sc.nextLine();
+        label = sc.nextLine();
 
         while(true) {
             System.out.print("Input matrix: ");
@@ -29,7 +29,7 @@ public class matrix {
     matrix(String matInp){
         Scanner sc = new Scanner(System.in);
         System.out.print("Input matrix label: ");
-        name = sc.nextLine();
+        label = sc.nextLine();
 
         this.matInp = matInp;
         matrixParse();
@@ -38,10 +38,6 @@ public class matrix {
     }
 
     matrix(double[][] values){
-        /*Scanner sc = new Scanner(System.in);
-        System.out.print("Input matrix label: ");
-        name = sc.nextLine();*/
-
         this.values = values;
         rowNum = values.length;
         colNum = values[0].length;
@@ -75,6 +71,17 @@ public class matrix {
                 System.out.printf(" %f", ent);
             }
             System.out.println(" |");
+        }
+    }
+
+    public void save(){
+        System.out.print("Save? (Y/N) ");
+        String choice = new Scanner(System.in).nextLine();
+        if(choice.equals("Y") || choice.equals("y")){
+            System.out.print("Input matrix label: ");
+            this.label = new Scanner(System.in).nextLine();
+            tool.matrices.add(this);
+            System.out.printf("    Matrix %s Saved!%n", this.label);
         }
     }
 }

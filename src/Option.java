@@ -1,13 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.IOException;
-
 
 
 public abstract class Option {
-    public abstract void call() throws IOException, InterruptedException;
+    public abstract void call()/*throws IOException, InterruptedException*/;
     public abstract String name();
-    public static void clear() {
-        System.out.print("Press any key to return to menu: ");
+    public static void back() {
+        System.out.print("Press ENTER to return to menu. ");
         new Scanner(System.in).nextLine();
         System.out.println();
     }
@@ -19,7 +18,7 @@ class matrixChoose extends Option{
     }
     public void call() {
         tool.current = tool.chooser();
-        clear();
+        back();
     }
 }
 
@@ -28,8 +27,9 @@ class matrixNew extends Option{
         return "New Matrix";
     }
     public void call() {
+        System.out.println();
         tool.matrices.add(new matrix());
-        clear();
+        back();
     }
 }
 
@@ -38,25 +38,79 @@ class matrixMultiply extends Option{
         return "Multiply";
     }
     public void call() {
-        clear();
+        back();
     }
 }
 
 class matrixAdd extends Option{
     public String name(){
-        return "Add";
+        return "Add to Matrix";
     }
     public void call() {
-        clear();
+        ArrayList<matrix> addable = new ArrayList<>();
+        for (matrix m : tool.matrices) {
+            if(m.rowNum == tool.current.rowNum && m.colNum == tool.current.colNum)
+                addable.add(m);
+        }
+
+        System.out.printf("%nAdd to Matrix %s:%n", tool.current.label);
+        //TODO: Bad Input handling
+        for (int i = 0; i < addable.size(); i++){
+            System.out.printf("    (%d) Matrix %s%n", i + 1, addable.get(i).label);
+        }
+
+        System.out.print("Selection: ");
+
+        double[][] addMat = addable.get(new Scanner(System.in).nextInt() - 1).values.clone();
+        double[][] resVal  = new double[tool.current.rowNum][tool.current.colNum];
+        for (int row = 0; row < tool.current.rowNum; row++) {
+            for (int ent = 0; ent < tool.current.colNum; ent++) {
+                resVal[row][ent] = tool.current.values[row][ent] + addMat[row][ent];
+            }
+        }
+        System.out.println("Result:");
+        matrix result = new matrix(resVal);
+        result.view();
+
+        result.save();
+
+        back();
     }
 }
 
 class matrixSubtract extends Option{
     public String name(){
-        return "Subtract";
+        return "Subtract from Matrix";
     }
     public void call() {
-        clear();
+        ArrayList<matrix> addable = new ArrayList<>();
+        for (matrix m : tool.matrices) {
+            if(m.rowNum == tool.current.rowNum && m.colNum == tool.current.colNum)
+                addable.add(m);
+        }
+
+        System.out.printf("%nSubtract from Matrix %s:%n", tool.current.label);
+        //TODO: Bad Input handling
+        for (int i = 0; i < addable.size(); i++){
+            System.out.printf("    (%d) Matrix %s%n", i + 1, addable.get(i).label);
+        }
+
+        System.out.print("Selection: ");
+
+        double[][] addMat = addable.get(new Scanner(System.in).nextInt() - 1).values.clone();
+        double[][] resVal  = new double[tool.current.rowNum][tool.current.colNum];
+        for (int row = 0; row < tool.current.rowNum; row++) {
+            for (int ent = 0; ent < tool.current.colNum; ent++) {
+                resVal[row][ent] = tool.current.values[row][ent] - addMat[row][ent];
+            }
+        }
+        System.out.println("Result:");
+        matrix result = new matrix(resVal);
+        result.view();
+
+        result.save();
+
+        back();
     }
 }
 
@@ -65,7 +119,7 @@ class matrixScalar extends Option{
         return "Multiply by Scalar";
     }
     public void call() {
-        System.out.printf("    Multiply %s by how much: ", tool.current.name);
+        System.out.printf("%nMultiply Matrix %s by how much: ", tool.current.label);
         double scalar = new Scanner(System.in).nextDouble();
         double[][] scalarReturn = new double[tool.current.rowNum][tool.current.colNum];
 
@@ -76,19 +130,12 @@ class matrixScalar extends Option{
         }
 
         matrix result = new matrix(scalarReturn);
-        System.out.println("    Result:");
+        System.out.println("Result:");
         result.view();
 
-        System.out.print("        Save? (Y/N) ");
-        String choice = new Scanner(System.in).nextLine();
-        if(choice.equals("Y") || choice.equals("y")){
-            System.out.print("    Input matrix label: ");
-            result.name = new Scanner(System.in).nextLine();
-            tool.matrices.add(result);
-            System.out.println("    Saved!");
-        }
+        result.save();
 
-        clear();
+        back();
     }
 }
 
@@ -100,8 +147,9 @@ class view extends Option{
 
     @Override
     public void call() {
+        System.out.printf("%n(Matrix %s)%n", tool.current.label);
         tool.current.view();
-        clear();
+        back();
     }
 
 }

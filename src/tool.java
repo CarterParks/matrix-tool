@@ -1,29 +1,26 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Arrays;
-
+/* TODO: Get matrix multiplication working
+*  TODO: Setup bad input handler*/
 public class tool {
     public static matrix current;
-    public static ArrayList<matrix> matrices;
-    /*Make Matrix Object so you can add unlimited matricies*/
-    /*Add matrix storage + selector*/
-    /*Get methods working*/
+    public static ArrayList<matrix> matrices = new ArrayList<>();
     public static boolean run = true;
 
-    public static void main(String [] args) throws IOException, InterruptedException {
+    public static void main(String [] args){
         new tool();
-        menu();
     }
 
     tool(){
-        matrices = new ArrayList<>();
         matrices.add(new matrix());
         current = matrices.get(0);
+        System.out.println();
+        menu();
     }
 
-    static void menu() throws IOException, InterruptedException {
+    static void menu(){
         List<Option> options = new ArrayList<>(Arrays.asList(
                 new matrixNew(),
                 new matrixScalar(),
@@ -36,7 +33,7 @@ public class tool {
             options.add(2, new matrixSubtract());
         }
 
-        System.out.println("Options:");
+        System.out.printf("Options (Matrix %s):%n", current.label);
         for (int i =0;i< options.size(); i++) {
             System.out.printf("    (%d) %s %n", i + 1, options.get(i).name());
         }
@@ -53,10 +50,12 @@ public class tool {
     public static matrix chooser(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("    Matricies:");
-        for(int i = 0; i < matrices.size(); i++) System.out.printf("        (%d) %s%n",i + 1, matrices.get(i).name);
+        System.out.printf("%nMatricies:%n");
+        for(int i = 0; i < matrices.size(); i++) System.out.printf("    (%d) %s%n",i + 1, matrices.get(i).label);
 
-        System.out.print("    Select a matrix: ");
-        return matrices.get(sc.nextInt());
+        System.out.print("Select a matrix: ");
+        matrix choice = matrices.get(sc.nextInt() - 1);
+        System.out.printf("Matrix %s Selected!%n", choice.label);
+        return choice;
     }
 }

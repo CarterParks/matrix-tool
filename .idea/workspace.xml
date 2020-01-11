@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Option.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,25 +88,29 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="147" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1578613290902" />
-    <state width="1367" height="364" key="GridCell.Tab.0.bottom" timestamp="1578767450524">
+    <state width="1367" height="364" key="GridCell.Tab.0.bottom" timestamp="1578773440122">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="364" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1578767450524" />
-    <state width="1367" height="364" key="GridCell.Tab.0.center" timestamp="1578767450524">
+    <state width="1367" height="364" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1578773440122" />
+    <state width="1367" height="364" key="GridCell.Tab.0.center" timestamp="1578773440122">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="364" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1578767450524" />
-    <state width="1367" height="364" key="GridCell.Tab.0.left" timestamp="1578767450508">
+    <state width="1367" height="364" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1578773440122" />
+    <state width="1367" height="364" key="GridCell.Tab.0.left" timestamp="1578773440122">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="364" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1578767450508" />
-    <state width="1367" height="364" key="GridCell.Tab.0.right" timestamp="1578767450524">
+    <state width="1367" height="364" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1578773440122" />
+    <state width="1367" height="364" key="GridCell.Tab.0.right" timestamp="1578773440122">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="364" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1578767450524" />
+    <state width="1367" height="364" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1578773440122" />
     <state x="339" y="172" key="run.anything.popup" timestamp="1578689285816">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1578689285816" />
+    <state x="346" y="89" key="search.everywhere.popup" timestamp="1578769541809">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="346" y="89" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1578769541809" />
   </component>
 </project>
