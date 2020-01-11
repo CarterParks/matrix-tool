@@ -24,6 +24,7 @@ public class matrix {
         }
         rowNum = values.length;
         colNum = values[0].length;
+        System.out.printf("   Matrix %s created!%n", this.label);
     }
 
     matrix(String matInp){

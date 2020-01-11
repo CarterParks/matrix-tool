@@ -34,11 +34,53 @@ class matrixNew extends Option{
 }
 
 class matrixMultiply extends Option{
+    double[][] multA;
+    double[][] multB;
     public String name(){
-        return "Multiply";
+        return "Multiply by Matrix";
     }
     public void call() {
+        ArrayList<matrix> multable = new ArrayList<>();
+        for( matrix m : tool.matrices){
+            if(tool.current.colNum == m.rowNum){
+                multable.add(m);
+            }
+        }
+
+        System.out.printf("%nMultiply Matrix %s By:%n", tool.current.label);
+        //TODO: Bad Input handling
+        for (int i = 0; i < multable.size(); i++){
+            System.out.printf("    (%d) Matrix %s%n", i + 1, multable.get(i).label);
+        }
+
+        multA = tool.current.values;
+
+        System.out.print("Selection: ");
+        multB = multable.get(new Scanner(System.in).nextInt() - 1).values;
+
+        double[][] resVal = new double[multA.length][multB[0].length];
+
+        for(int i = 0; i < resVal.length; i++){
+            for(int j = 0; j < resVal.length; j++){
+                resVal[i][j] = cij(i,j);
+            }
+        }
+
+        System.out.println("Result:");
+
+        matrix result = new matrix(resVal);
+        result.view();
+        result.save();
+
         back();
+    }
+
+    private double cij(int i, int j){
+        double cumulative = 0;
+        for(int k = 0; k < this.multA[0].length; k++){
+            cumulative += multA[i][k] * multB[k][j];
+        }
+        return cumulative;
     }
 }
 
@@ -68,10 +110,11 @@ class matrixAdd extends Option{
                 resVal[row][ent] = tool.current.values[row][ent] + addMat[row][ent];
             }
         }
+
         System.out.println("Result:");
+
         matrix result = new matrix(resVal);
         result.view();
-
         result.save();
 
         back();
@@ -83,31 +126,32 @@ class matrixSubtract extends Option{
         return "Subtract from Matrix";
     }
     public void call() {
-        ArrayList<matrix> addable = new ArrayList<>();
+        ArrayList<matrix> subbable = new ArrayList<>();
         for (matrix m : tool.matrices) {
             if(m.rowNum == tool.current.rowNum && m.colNum == tool.current.colNum)
-                addable.add(m);
+                subbable.add(m);
         }
 
         System.out.printf("%nSubtract from Matrix %s:%n", tool.current.label);
         //TODO: Bad Input handling
-        for (int i = 0; i < addable.size(); i++){
-            System.out.printf("    (%d) Matrix %s%n", i + 1, addable.get(i).label);
+        for (int i = 0; i < subbable.size(); i++){
+            System.out.printf("    (%d) Matrix %s%n", i + 1, subbable.get(i).label);
         }
 
         System.out.print("Selection: ");
 
-        double[][] addMat = addable.get(new Scanner(System.in).nextInt() - 1).values.clone();
+        double[][] subMat = subbable.get(new Scanner(System.in).nextInt() - 1).values.clone();
         double[][] resVal  = new double[tool.current.rowNum][tool.current.colNum];
         for (int row = 0; row < tool.current.rowNum; row++) {
             for (int ent = 0; ent < tool.current.colNum; ent++) {
-                resVal[row][ent] = tool.current.values[row][ent] - addMat[row][ent];
+                resVal[row][ent] = tool.current.values[row][ent] - subMat[row][ent];
             }
         }
+
         System.out.println("Result:");
+
         matrix result = new matrix(resVal);
         result.view();
-
         result.save();
 
         back();

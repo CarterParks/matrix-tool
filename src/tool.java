@@ -1,9 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Arrays;
 /* TODO: Get matrix multiplication working
 *  TODO: Setup bad input handler*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+import java.util.Scanner;
+import java.util.Arrays;
+
 public class tool {
     public static matrix current;
     public static ArrayList<matrix> matrices = new ArrayList<>();
@@ -15,26 +18,34 @@ public class tool {
 
     tool(){
         matrices.add(new matrix());
-        current = matrices.get(0);
         System.out.println();
+        current = matrices.get(0);
         menu();
     }
 
     static void menu(){
         List<Option> options = new ArrayList<>(Arrays.asList(
                 new matrixNew(),
-                new matrixScalar(),
                 new view(),
+                new matrixScalar(),
                 new exit()
         ));
+        boolean mul = false;
+        for (matrix m : matrices) {
+            if (current.colNum == m.rowNum) {
+                mul = true;
+                break;
+            }
+        }
+        if(mul) options.add(3, new matrixMultiply());
         if(matrices.size()>1){
-            options.add(0, new matrixChoose());
-            options.add(1, new matrixAdd());
-            options.add(2, new matrixSubtract());
+            options.add(2, new matrixChoose());
+            options.add(3, new matrixAdd());
+            options.add(4, new matrixSubtract());
         }
 
         System.out.printf("Options (Matrix %s):%n", current.label);
-        for (int i =0;i< options.size(); i++) {
+        for (int i = 0;i< options.size(); i++) {
             System.out.printf("    (%d) %s %n", i + 1, options.get(i).name());
         }
 
