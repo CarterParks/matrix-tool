@@ -65,6 +65,29 @@ class matrixScalar extends Option{
         return "Multiply by Scalar";
     }
     public void call() {
+        System.out.printf("    Multiply %s by how much: ", tool.current.name);
+        double scalar = new Scanner(System.in).nextDouble();
+        double[][] scalarReturn = new double[tool.current.rowNum][tool.current.colNum];
+
+        for (int rowN = 0; rowN < tool.current.rowNum; rowN++) {
+            for (int colN = 0; colN < tool.current.colNum; colN++) {
+                 scalarReturn[rowN][colN] = tool.current.values[rowN][colN] * scalar;
+            }
+        }
+
+        matrix result = new matrix(scalarReturn);
+        System.out.println("    Result:");
+        result.view();
+
+        System.out.print("        Save? (Y/N) ");
+        String choice = new Scanner(System.in).nextLine();
+        if(choice.equals("Y") || choice.equals("y")){
+            System.out.print("    Input matrix label: ");
+            result.name = new Scanner(System.in).nextLine();
+            tool.matrices.add(result);
+            System.out.println("    Saved!");
+        }
+
         clear();
     }
 }
@@ -77,12 +100,7 @@ class view extends Option{
 
     @Override
     public void call() {
-        double[][] work = tool.current.values;
-        for (double[] row : work) {
-            for (double entry : row)
-                System.out.print(" " + entry);
-            System.out.println();
-        }
+        tool.current.view();
         clear();
     }
 

@@ -25,6 +25,28 @@ public class matrix {
         rowNum = values.length;
         colNum = values[0].length;
     }
+
+    matrix(String matInp){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input matrix label: ");
+        name = sc.nextLine();
+
+        this.matInp = matInp;
+        matrixParse();
+        rowNum = values.length;
+        colNum = values[0].length;
+    }
+
+    matrix(double[][] values){
+        /*Scanner sc = new Scanner(System.in);
+        System.out.print("Input matrix label: ");
+        name = sc.nextLine();*/
+
+        this.values = values;
+        rowNum = values.length;
+        colNum = values[0].length;
+    }
+
     private void matrixParse(){
         String[] rows = this.matInp.split(">");
         int cols = 1 + (int) rows[0].codePoints().filter(ch -> ch == '_').count();
@@ -44,5 +66,15 @@ public class matrix {
         }
 
         this.values = mat.clone();
+    }
+
+    public void view(){ /*TODO: Even out the issue with different length strings*/
+        for (double[] row : values) {
+            System.out.print("|");
+            for (double ent: row) {
+                System.out.printf(" %f", ent);
+            }
+            System.out.println(" |");
+        }
     }
 }
