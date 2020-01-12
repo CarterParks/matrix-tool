@@ -1,11 +1,10 @@
-//TODO: Setup bad input handlers for options Ctrl+F "next"
-
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
 public abstract class Option {
-    public abstract void call()/*throws IOException, InterruptedException*/;
+    public abstract void call();
     public abstract String name();
     public static void back() {
         System.out.print("Press ENTER to return to menu. ");
@@ -57,8 +56,7 @@ class matrixMultiply extends Option{
 
         multA = tool.current.values;
 
-        System.out.print("Selection: ");
-        multB = multable.get(new Scanner(System.in).nextInt() - 1).values;
+        multB = multable.get(tool.choice(multable, "Select Matrix: ")).values;
 
         double[][] resVal = new double[multA.length][multB[0].length];
 
@@ -98,14 +96,11 @@ class matrixAdd extends Option{
         }
 
         System.out.printf("%nAdd to Matrix %s:%n", tool.current.label);
-        //TODO: Bad Input handling
         for (int i = 0; i < addable.size(); i++){
             System.out.printf("    (%d) Matrix %s%n", i + 1, addable.get(i).label);
         }
 
-        System.out.print("Selection: ");
-
-        double[][] addMat = addable.get(new Scanner(System.in).nextInt() - 1).values.clone();
+        double[][] addMat = addable.get(tool.choice(addable, "Select Matrix: ")).values.clone();
         double[][] resVal  = new double[tool.current.rowNum][tool.current.colNum];
         for (int row = 0; row < tool.current.rowNum; row++) {
             for (int ent = 0; ent < tool.current.colNum; ent++) {
@@ -142,7 +137,7 @@ class matrixSubtract extends Option{
 
         System.out.print("Selection: ");
 
-        double[][] subMat = subbable.get(new Scanner(System.in).nextInt() - 1).values.clone();
+        double[][] subMat = subbable.get(tool.choice(subbable,"Select Matrix: ")).values.clone();
         double[][] resVal  = new double[tool.current.rowNum][tool.current.colNum];
         for (int row = 0; row < tool.current.rowNum; row++) {
             for (int ent = 0; ent < tool.current.colNum; ent++) {
@@ -165,8 +160,18 @@ class matrixScalar extends Option{
         return "Multiply by Scalar";
     }
     public void call() {
-        System.out.printf("%nMultiply Matrix %s by how much: ", tool.current.label);
-        double scalar = new Scanner(System.in).nextDouble();
+
+        double scalar;
+        while (true){
+            System.out.printf("%nMultiply Matrix %s by how much: ", tool.current.label);
+            try {
+                scalar = new Scanner(System.in).nextDouble();
+                break;
+            }catch (InputMismatchException e){
+                System.out.print("Please enter a number.");
+            }
+
+        }
         double[][] scalarReturn = new double[tool.current.rowNum][tool.current.colNum];
 
         for (int rowN = 0; rowN < tool.current.rowNum; rowN++) {
@@ -176,9 +181,9 @@ class matrixScalar extends Option{
         }
 
         matrix result = new matrix(scalarReturn);
+
         System.out.println("Result:");
         result.view();
-
         result.save();
 
         back();

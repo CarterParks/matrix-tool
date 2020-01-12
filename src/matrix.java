@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class matrix {
@@ -15,27 +16,47 @@ public class matrix {
             System.out.println("Please input a label.");
         }
 
-        System.out.print("Number of rows: ");
-        rowNum = new Scanner(System.in).nextInt();
-        System.out.print("Number of columns: ");
-        colNum = new Scanner(System.in).nextInt();
+        while(true) {
+            System.out.print("Number of rows: ");
+            try {
+                rowNum = new Scanner(System.in).nextInt();
+                break;
+            }catch (InputMismatchException e){
+                System.out.println("Please enter an integer.");
+            }
+        }
+
+        while(true) {
+            System.out.print("Number of columns: ");
+            try {
+                colNum = new Scanner(System.in).nextInt();
+                break;
+            }catch (InputMismatchException e){
+                System.out.println("Please enter an integer.");
+            }
+        }
+
         values = new double[rowNum][colNum];
 
         for(int r = 0; r < rowNum; r++){
-
             String[] inputs;
+            double[] outs = new double[colNum];
             while(true){
                 if(r == 0) System.out.print("Input row 1, separated by spaces: ");
                 else System.out.printf("Input row %d: ", r + 1);
                 inputs = new Scanner(System.in).nextLine().split(" ");
+                try {
+                    for(int ite = 0; ite < colNum; ite++){
+                        outs[ite] = Double.parseDouble(inputs[ite]);
+                    }
+                }catch (NumberFormatException e){
+                    System.out.printf("Please enter %d numbers separated by spaces.%n", colNum);
+                    continue;
+                }
                 if(inputs.length == colNum) break;
                 System.out.printf("Please enter %d numbers separated by spaces.%n", colNum);
             }
 
-            double[] outs = new double[colNum];
-            for(int ite = 0; ite < colNum; ite++){
-                outs[ite] = Double.parseDouble(inputs[ite]);
-            }
             values[r] = outs;
         }
 

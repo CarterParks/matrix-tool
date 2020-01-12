@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
 public class tool {
     public static matrix current;
@@ -22,7 +18,7 @@ public class tool {
     }
 
     static void menu(){
-        List<Option> options = new ArrayList<>(Arrays.asList(
+        ArrayList<Option> options = new ArrayList<>(Arrays.asList(
                 new matrixNew(),
                 new view(),
                 new matrixScalar(),
@@ -47,19 +43,7 @@ public class tool {
             System.out.printf("    (%d) %s %n", i + 1, options.get(i).name());
         }
 
-        Scanner sc = new Scanner(System.in);
-
-        int choice;
-        while (true) {
-            System.out.print("Selection: ");
-            choice = sc.nextInt();
-            if(1 < choice & choice - 1 < options.size()){
-                break;
-            }
-            System.out.println("Please enter a list option.");
-        }
-
-        options.get(choice - 1).call();
+        options.get(choice(options, "Select Option: ")).call();
 
         if(run){
             menu();
@@ -67,23 +51,29 @@ public class tool {
     }
 
     public static matrix chooser() {
-        Scanner sc = new Scanner(System.in);
-
         System.out.printf("%nMatricies:%n");
         for (int i = 0; i < matrices.size(); i++) System.out.printf("    (%d) %s%n", i + 1, matrices.get(i).label);
 
+        matrix matCho = matrices.get(choice(matrices, "Select Matrix: "));
+        System.out.printf("Matrix %s Selected!%n", matCho.label);
+        return matCho;
+    }
+
+    public static <E> int choice(ArrayList<E> ls, String prompt){
         int choice;
         while(true){
-            System.out.print("Select a matrix: ");
-            choice = sc.nextInt() - 1;
-            if(1 < choice & choice - 1 < matrices.size()){
+            System.out.print(prompt);
+            try {
+                choice = new Scanner(System.in).nextInt() - 1;
+            }catch (InputMismatchException e){
+                System.out.print("Please enter a list option.");
+                continue;
+            }
+            if(0 <= choice & choice < ls.size()){
                 break;
             }
             System.out.println("Please enter a list option.");
         }
-
-        matrix matCho = matrices.get(choice);
-        System.out.printf("Matrix %s Selected!%n", matCho.label);
-        return matCho;
+        return choice;
     }
 }
