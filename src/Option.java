@@ -33,7 +33,7 @@ class matrixNew extends Option{
         back();
     }
 }
-
+ //TODO: Unfuck program
 class matrixMultiply extends Option{
     double[][] multA;
     double[][] multB;
