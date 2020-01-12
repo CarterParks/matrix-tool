@@ -1,5 +1,3 @@
-/*  TODO: Setup bad input handler*/
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,5 @@
+//TODO: Setup bad input handlers for options Ctrl+F "next"
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
