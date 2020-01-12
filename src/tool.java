@@ -17,7 +17,7 @@ public class tool {
     }
 
     tool(){
-	System.out.printf("%n%nmatrix-tool V1")
+        System.out.println("=====[ matrix-tool v1 ]=====");
         matrices.add(new matrix());
         System.out.println();
         current = matrices.get(0);
