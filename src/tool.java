@@ -1,5 +1,4 @@
-/* TODO: Get matrix multiplication working
-*  TODO: Setup bad input handler*/
+/*  TODO: Setup bad input handler*/
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,23 +50,42 @@ public class tool {
         }
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Selection: ");
-        options.get(sc.nextInt() - 1).call();
+
+        int choice;
+        while (true) {
+            System.out.print("Selection: ");
+            choice = sc.nextInt();
+            if(1 < choice & choice - 1 < options.size()){
+                break;
+            }
+            System.out.println("Please enter a list option.");
+        }
+
+        options.get(choice - 1).call();
 
         if(run){
             menu();
         }
     }
 
-    public static matrix chooser(){
+    public static matrix chooser() {
         Scanner sc = new Scanner(System.in);
 
         System.out.printf("%nMatricies:%n");
-        for(int i = 0; i < matrices.size(); i++) System.out.printf("    (%d) %s%n",i + 1, matrices.get(i).label);
+        for (int i = 0; i < matrices.size(); i++) System.out.printf("    (%d) %s%n", i + 1, matrices.get(i).label);
 
-        System.out.print("Select a matrix: ");
-        matrix choice = matrices.get(sc.nextInt() - 1);
-        System.out.printf("Matrix %s Selected!%n", choice.label);
-        return choice;
+        int choice;
+        while(true){
+            System.out.print("Select a matrix: ");
+            choice = sc.nextInt() - 1;
+            if(1 < choice & choice - 1 < matrices.size()){
+                break;
+            }
+            System.out.println("Please enter a list option.");
+        }
+
+        matrix matCho = matrices.get(choice);
+        System.out.printf("Matrix %s Selected!%n", matCho.label);
+        return matCho;
     }
 }
