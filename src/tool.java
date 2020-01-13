@@ -66,7 +66,7 @@ public class tool {
             try {
                 choice = new Scanner(System.in).nextInt() - 1;
             }catch (InputMismatchException e){
-                System.out.print("Please enter a list option.");
+                System.out.println("Please enter a list option.");
                 continue;
             }
             if(0 <= choice & choice < ls.size()){

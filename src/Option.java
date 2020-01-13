@@ -36,7 +36,7 @@ class matrixNew extends Option{
  //TODO: Unfuck program
 class matrixMultiply extends Option{
     double[][] multA;
-    double[][] multB;
+     double[][] multB;
     public String name(){
         return "Multiply by Matrix";
     }
@@ -49,14 +49,13 @@ class matrixMultiply extends Option{
         }
 
         System.out.printf("%nMultiply Matrix %s By:%n", tool.current.label);
-        //TODO: Bad Input handling
         for (int i = 0; i < multable.size(); i++){
             System.out.printf("    (%d) Matrix %s%n", i + 1, multable.get(i).label);
         }
 
-        multA = tool.current.values;
+        multA = tool.current.values.clone();
 
-        multB = multable.get(tool.choice(multable, "Select Matrix: ")).values;
+        multB = multable.get(tool.choice(multable, "Select Matrix: ")).values.clone();
 
         double[][] resVal = new double[multA.length][multB[0].length];
 

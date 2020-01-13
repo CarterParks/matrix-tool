@@ -49,7 +49,7 @@ public class matrix {
                     for(int ite = 0; ite < colNum; ite++){
                         outs[ite] = Double.parseDouble(inputs[ite]);
                     }
-                }catch (NumberFormatException e){
+                }catch (NumberFormatException | IndexOutOfBoundsException e){
                     System.out.printf("Please enter %d numbers separated by spaces.%n", colNum);
                     continue;
                 }
