@@ -1,41 +1,54 @@
 import java.util.*;
 
-public class tool {
-    public static matrix current;
-    public static ArrayList<matrix> matrices = new ArrayList<>();
+public class Tool {
+    public static Matrix current;
+    public static ArrayList<Matrix> matrices = new ArrayList<>();
     public static boolean run = true;
 
     public static void main(String [] args){
-        new tool();
+        new Tool();
     }
 
-    tool(){
-        System.out.println("=====[ matrix-tool v1 ]=====");
-        matrices.add(new matrix());
+    Tool(){
+        System.out.printf("=====[ matrix-tool v2 ]=====%n%n");
+        matrices.add(new Matrix());
         System.out.println();
         current = matrices.get(0);
         menu();
     }
 
     static void menu(){
+        // Default Options
         ArrayList<Option> options = new ArrayList<>(Arrays.asList(
-                new matrixNew(),
-                new view(),
-                new matrixScalar(),
+                new MatrixNew(),
+                new View(),
+                new MatrixScalar(),
+                new Transpose(),
                 new exit()
         ));
+
+        // Multiplying Matrices
         boolean mul = false;
-        for (matrix m : matrices) {
+        for (Matrix m : matrices) {
             if (current.colNum == m.rowNum) {
                 mul = true;
                 break;
             }
         }
-        if(mul) options.add(3, new matrixMultiply());
+        if(mul) options.add(3, new MatrixMultiply());
+
+        // Vector Cross Product
+        boolean _3x1 = current.rowNum == 3 && current.colNum == 1;
+        boolean _1x3 = current.rowNum == 1 && current.colNum == 3;
+        if(_3x1 || _1x3){
+            options.add(3,new CrossProduct());
+        }
+
+        // Multiple Matrices
         if(matrices.size()>1){
-            options.add(2, new matrixChoose());
-            options.add(3, new matrixAdd());
-            options.add(4, new matrixSubtract());
+            options.add(2, new MatrixSubtract());
+            options.add(2, new MatrixAdd());
+            options.add(2, new MatrixChoose());
         }
 
         System.out.printf("Options (Matrix %s):%n", current.label);
@@ -50,11 +63,11 @@ public class tool {
         }
     }
 
-    public static matrix chooser() {
+    public static Matrix chooser() {
         System.out.printf("%nMatricies:%n");
         for (int i = 0; i < matrices.size(); i++) System.out.printf("    (%d) %s%n", i + 1, matrices.get(i).label);
 
-        matrix matCho = matrices.get(choice(matrices, "Select Matrix: "));
+        Matrix matCho = matrices.get(choice(matrices, "Select Matrix: "));
         System.out.printf("Matrix %s Selected!%n", matCho.label);
         return matCho;
     }
