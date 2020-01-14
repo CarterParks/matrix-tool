@@ -1,4 +1,4 @@
-# Matrix-Tool
+# matrix-tool
 A shell Tool designed to make it easier to work with matrices.
 ## Current operations:
 

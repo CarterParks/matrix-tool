@@ -39,7 +39,7 @@ class MatrixMultiply extends Option{
     double[][] multA;
     double[][] multB;
     public String name(){
-        return "Multiply by Matrix";
+        return String.format("Multiply Matrix %s by Matrix", Tool.current.label);
     }
     public void call() {
         ArrayList<Matrix> multable = new ArrayList<>();
@@ -86,12 +86,12 @@ class MatrixMultiply extends Option{
 
 class MatrixAdd extends Option{
     public String name(){
-        return "Add to Matrix";
+        return String.format("Add to Matrix %s", Tool.current.label);
     }
     public void call() {
         ArrayList<Matrix> addable = new ArrayList<>();
         for (Matrix m : Tool.matrices) {
-            if(m.rowNum == Tool.current.rowNum && m.colNum == Tool.current.colNum)
+            if(m.rowNum == Tool.current.rowNum && m.colNum == Tool.current.colNum && m != Tool.current)
                 addable.add(m);
         }
 
@@ -120,12 +120,12 @@ class MatrixAdd extends Option{
 
 class MatrixSubtract extends Option{
     public String name(){
-        return "Subtract from Matrix";
+        return String.format("Subtract from Matrix %s", Tool.current.label);
     }
     public void call() {
         ArrayList<Matrix> subbable = new ArrayList<>();
         for (Matrix m : Tool.matrices) {
-            if(m.rowNum == Tool.current.rowNum && m.colNum == Tool.current.colNum)
+            if(m.rowNum == Tool.current.rowNum && m.colNum == Tool.current.colNum && m != Tool.current)
                 subbable.add(m);
         }
 
@@ -155,7 +155,7 @@ class MatrixSubtract extends Option{
 
 class MatrixScalar extends Option{
     public String name(){
-        return "Multiply by Scalar";
+        return String.format("Multiply Matrix %s by Scalar", Tool.current.label);
     }
     public void call() {
 
@@ -191,7 +191,7 @@ class MatrixScalar extends Option{
 class View extends Option{
     @Override
     public String name() {
-        return "View Matrix";
+        return String.format("View Matrix %s", Tool.current.label);
     }
 
     @Override
@@ -210,8 +210,6 @@ class CrossProduct extends Option{
 
     @Override
     public void call() {
-        System.out.println("Coming Soon!");
-/*
         ArrayList<Matrix> crossable = new ArrayList<>();
         for (Matrix m: Tool.matrices) {
             boolean _3x1 = m.rowNum == 3 && m.colNum == 1;
@@ -221,49 +219,55 @@ class CrossProduct extends Option{
             }
         }
 
-        System.out.println("Vector to Cross Multiply: ");
+        System.out.printf("%nVector to Cross Multiply Vector %s with :%n", Tool.current.label);
         for (int i = 0; i < crossable.size(); i++){
             System.out.printf("    (%d) Vector %s%n", i + 1, crossable.get(i).label);
         }
 
-        double[][] vA = Tool.current.values;
+        double[][] mA = Tool.current.values;
+        double[][] mB = crossable.get(Tool.choice(crossable, "Selection: ")).values;
 
-        double[][] vB = crossable.get(Tool.choice(crossable, "Selection: ")).values;
+        double[] vA = vectorize(mA);
+        double[] vB = vectorize(mB);
 
-        vA = rowToColumn(vA);
-        vB = rowToColumn(vB);
+        double[][] resValue = new double[][] {
+            {(vA[1]*vB[2])-(vA[2]*vB[1])},
+            {(vA[2]*vB[0])-(vA[0]*vB[2])},
+            {(vA[0]*vB[1])-(vA[1]*vB[0])}
+        };
 
-        double A = vA[0][0]; double B =vA[1][0]; double C = vA[2][0];
-        double D = vB[0][0]; double E =vB[1][0]; double F = vB[2][0];
-
-        double[][] resValue = new double[][] {{B*F-E*C},{-(A*F-D*C)},{A*E-D*B}};
+        System.out.println("Result:");
         Matrix result = new Matrix(resValue);
         result.view();
         result.save();
-*/
         back();
     }
 
-    private static double[][] rowToColumn (double[][] m){
-        double[][] ret = new double[3][1];
-        if(m.length == 1){
-            for(int i = 0; i < 3; i++){
-                ret[i][0] = m[0][i];
+    private static double[] vectorize(double[][] m){
+        double[] n = new double[3];
+
+        if(m.length == 1 && m[0].length == 3){
+            n = m[0].clone();
+        }else if(m.length == 3 && m[0].length == 1){
+            for (int i = 0; i < 3; i++) {
+                n[i] = m[i][0];
             }
         }
-        return ret;
-    }
 
+        return n;
+    }
 }
 
 class Transpose extends Option{
     @Override
     public String name() {
-        return "Transpose Matrix";
+        return String.format("Transpose Matrix %s", Tool.current.label);
     }
 
     @Override
     public void call() {
+        System.out.println();
+
         double[][] resValue = new double[Tool.current.colNum][Tool.current.rowNum];
 
         for (int i = 0; i < Tool.current.rowNum; i++) {
@@ -272,23 +276,13 @@ class Transpose extends Option{
             }
         }
 
+        System.out.printf("Matrix %s Transposed:%n", Tool.current.label);
         Matrix result = new Matrix(resValue);
         result.view();
         result.save();
 
         back();
     }
-
-    /*public double[][] transpose(double[][] m){
-        double[][] resValue = new double[m[0].length][m.length];
-
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m[0].length; j++) {
-                resValue[j][i] = m[i][j];
-            }
-        }
-        return resValue;
-    }*/
 }
 
 class exit extends Option{

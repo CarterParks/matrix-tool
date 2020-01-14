@@ -46,8 +46,8 @@ public class Matrix {
                 else System.out.printf("Input row %d: ", r + 1);
                 inputs = new Scanner(System.in).nextLine().split(" ");
                 try {
-                    for(int ite = 0; ite < colNum; ite++){
-                        outs[ite] = Double.parseDouble(inputs[ite]);
+                    for(int i = 0; i < colNum; i++){
+                        outs[i] = Double.parseDouble(inputs[i]);
                     }
                 }catch (NumberFormatException | IndexOutOfBoundsException e){
                     System.out.printf("Please enter %d numbers separated by spaces.%n", colNum);
@@ -80,7 +80,7 @@ public class Matrix {
     }
 
     public void save(){
-        System.out.print("Save? (Y/N) ");
+        System.out.print("Save new Matrix? (Y|N) ");
         String choice = new Scanner(System.in).nextLine();
         if(choice.equals("Y") || choice.equals("y")){
             System.out.print("Input matrix label: ");

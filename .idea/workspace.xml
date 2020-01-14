@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59db56f1-ebc3-40dc-8a59-c54332bd4ab1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/matrix_tool.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matrix-tool.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/matrix-tool.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Option.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +24,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="Tool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -69,21 +67,21 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1367" height="179" key="GridCell.Tab.0.bottom" timestamp="1578968543981">
+    <state width="1367" height="215" key="GridCell.Tab.0.bottom" timestamp="1579026622363">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="179" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1578968543981" />
-    <state width="1367" height="179" key="GridCell.Tab.0.center" timestamp="1578968543980">
+    <state width="1367" height="215" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1579026622363" />
+    <state width="1367" height="215" key="GridCell.Tab.0.center" timestamp="1579026622361">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="179" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1578968543980" />
-    <state width="1367" height="179" key="GridCell.Tab.0.left" timestamp="1578968543979">
+    <state width="1367" height="215" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1579026622361" />
+    <state width="1367" height="215" key="GridCell.Tab.0.left" timestamp="1579026622360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="179" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1578968543979" />
-    <state width="1367" height="179" key="GridCell.Tab.0.right" timestamp="1578968543980">
+    <state width="1367" height="215" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1579026622360" />
+    <state width="1367" height="215" key="GridCell.Tab.0.right" timestamp="1579026622362">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="179" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1578968543980" />
+    <state width="1367" height="215" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1579026622362" />
   </component>
 </project>
