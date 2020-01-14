@@ -1,12 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class matrix {
+public class Matrix {
     public double[][] values;
     public String label;
     public int rowNum;
     public int colNum;
-    matrix(){
+    Matrix(){
         Scanner sc = new Scanner(System.in);
 
         while(true){
@@ -63,7 +63,7 @@ public class matrix {
         System.out.printf("   Matrix %s created!%n", this.label);
     }
 
-    matrix(double[][] values){
+    Matrix(double[][] values){
         this.values = values;
         rowNum = values.length;
         colNum = values[0].length;
@@ -85,7 +85,7 @@ public class matrix {
         if(choice.equals("Y") || choice.equals("y")){
             System.out.print("Input matrix label: ");
             this.label = new Scanner(System.in).nextLine();
-            tool.matrices.add(this);
+            Tool.matrices.add(this);
             System.out.printf("    Matrix %s Saved!%n", this.label);
         }
     }

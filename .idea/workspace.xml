@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca5547f5-9820-4b82-97da-198a253b4c0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Option.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,17 +33,17 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
+    <configuration name="Tool" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Tool" />
+      <module name="matrix-tool" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tool" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="tool" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tool" />
-      <module name="matrix-tool" />
-      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -92,22 +90,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="147" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1578613290902" />
-    <state width="1367" height="366" key="GridCell.Tab.0.bottom" timestamp="1578928678666">
+    <state width="1367" height="366" key="GridCell.Tab.0.bottom" timestamp="1578967022650">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="366" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1578928678666" />
-    <state width="1367" height="366" key="GridCell.Tab.0.center" timestamp="1578928678665">
+    <state width="1367" height="366" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1578967022650" />
+    <state width="1367" height="366" key="GridCell.Tab.0.center" timestamp="1578967022650">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="366" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1578928678665" />
-    <state width="1367" height="366" key="GridCell.Tab.0.left" timestamp="1578928678657">
+    <state width="1367" height="366" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1578967022650" />
+    <state width="1367" height="366" key="GridCell.Tab.0.left" timestamp="1578967022650">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="366" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1578928678657" />
-    <state width="1367" height="366" key="GridCell.Tab.0.right" timestamp="1578928678666">
+    <state width="1367" height="366" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1578967022650" />
+    <state width="1367" height="366" key="GridCell.Tab.0.right" timestamp="1578967022650">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="366" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1578928678666" />
+    <state width="1367" height="366" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1578967022650" />
     <state x="339" y="172" key="run.anything.popup" timestamp="1578689285816">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
