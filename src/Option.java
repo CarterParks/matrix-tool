@@ -210,6 +210,8 @@ class CrossProduct extends Option{
 
     @Override
     public void call() {
+        System.out.println("Coming Soon!");
+/*
         ArrayList<Matrix> crossable = new ArrayList<>();
         for (Matrix m: Tool.matrices) {
             boolean _3x1 = m.rowNum == 3 && m.colNum == 1;
@@ -238,7 +240,7 @@ class CrossProduct extends Option{
         Matrix result = new Matrix(resValue);
         result.view();
         result.save();
-
+*/
         back();
     }
 

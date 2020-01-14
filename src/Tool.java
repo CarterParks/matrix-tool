@@ -10,7 +10,7 @@ public class Tool {
     }
 
     Tool(){
-        System.out.printf("=====[ matrix-tool v2 ]=====%n%n");
+        System.out.printf("=====[ matrix-tool v1.1 ]=====%n%n");
         matrices.add(new Matrix());
         System.out.println();
         current = matrices.get(0);
