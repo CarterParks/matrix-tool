@@ -210,9 +210,6 @@ class CrossProduct extends Option{
 
     @Override
     public void call() {
-        System.out.printf("%nSubtract from Matrix %s:%n", Tool.current.label);
-        //TODO: Bad Input handling
-
         ArrayList<Matrix> crossable = new ArrayList<>();
         for (Matrix m: Tool.matrices) {
             boolean _3x1 = m.rowNum == 3 && m.colNum == 1;
