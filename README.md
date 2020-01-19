@@ -14,7 +14,10 @@ All operations are performed with the current Matrix as the first term in the op
 ## Future
 * Overwriting Same-name matrices
 * Editing Matrices
-* Determinant
 * Vector Magnitude
 * Vector Unitification (Make Unit vector from vector)
 * Cramer's Rule for Systems of equations
+* (Elimination Matrices?)
+* Upper & Lower Triangular
+* Determinant
+* Read .csv or other data sets

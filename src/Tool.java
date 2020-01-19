@@ -10,7 +10,7 @@ public class Tool {
     }
 
     Tool(){
-        System.out.printf("=====[ matrix-tool v1.1 ]=====%n%n");
+        System.out.printf("=====[ matrix-tool v1.2 ]=====%n%n");
         matrices.add(new Matrix());
         System.out.println();
         current = matrices.get(0);
@@ -41,7 +41,13 @@ public class Tool {
         boolean _3x1 = current.rowNum == 3 && current.colNum == 1;
         boolean _1x3 = current.rowNum == 1 && current.colNum == 3;
         if(_3x1 || _1x3){
-            options.add(3,new CrossProduct());
+            options.add(3, new CrossProduct());
+        }
+
+        //Square Matrix
+        if(current.rowNum == current.colNum){
+            options.add(4, new Determinant());
+            options.add(4, new UpperTri());
         }
 
         // Multiple Matrices

@@ -2,29 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59db56f1-ebc3-40dc-8a59-c54332bd4ab1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/plan.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/CrossProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/CrossProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Matrix.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixAdd.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixAdd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixChoose.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixChoose.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixMultiply.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixMultiply.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixNew.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixNew.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixScalar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixScalar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixSubtract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixSubtract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Option.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Option.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Tool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Tool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Transpose.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Transpose.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/exit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/exit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/matrix-tool.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/matrix-tool.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Option.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1WMnaC2PsYsyabJbREMtkhFXLwL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Tool">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="matrix-tool" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tool" />
       <module name="matrix-tool" />
@@ -35,6 +72,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Tool" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -63,22 +101,41 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1367" height="215" key="GridCell.Tab.0.bottom" timestamp="1579026622363">
+    <state width="1367" height="215" key="GridCell.Tab.0.bottom" timestamp="1579448725075">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1579026622363" />
-    <state width="1367" height="215" key="GridCell.Tab.0.center" timestamp="1579026622361">
+    <state width="1367" height="215" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1579448725075" />
+    <state width="1367" height="215" key="GridCell.Tab.0.center" timestamp="1579448725074">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1579026622361" />
-    <state width="1367" height="215" key="GridCell.Tab.0.left" timestamp="1579026622360">
+    <state width="1367" height="215" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1579448725074" />
+    <state width="1367" height="215" key="GridCell.Tab.0.left" timestamp="1579448725074">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1579026622360" />
-    <state width="1367" height="215" key="GridCell.Tab.0.right" timestamp="1579026622362">
+    <state width="1367" height="215" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1579448725074" />
+    <state width="1367" height="215" key="GridCell.Tab.0.right" timestamp="1579448725074">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1579026622362" />
+    <state width="1367" height="215" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1579448725074" />
+    <state width="1367" height="226" key="GridCell.Tab.1.bottom" timestamp="1579443799909">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1367" height="226" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1579443799909" />
+    <state width="1367" height="226" key="GridCell.Tab.1.center" timestamp="1579443799908">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1367" height="226" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1579443799908" />
+    <state width="1367" height="226" key="GridCell.Tab.1.left" timestamp="1579443799908">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1367" height="226" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1579443799908" />
+    <state width="1367" height="226" key="GridCell.Tab.1.right" timestamp="1579443799909">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1367" height="226" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1579443799909" />
   </component>
 </project>

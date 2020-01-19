@@ -89,4 +89,27 @@ public class Matrix {
             System.out.printf("    Matrix %s Saved!%n", this.label);
         }
     }
+
+    public double[] rowGrab(int idx){
+        return values[idx];
+    }
+
+    public double[] columnGrab(int idx){
+        double[] col = new double[values.length];
+        for (int i = 0; i < values.length; i++) {
+            col[i] = values[i][idx];
+        }
+        return col;
+    }
+
+    public void rowSub(int piv, int sub){
+        if(this.values[piv][piv] == 0)
+            System.out.println("Warning: Pivot is 0.");
+        double b = this.values[sub][piv];
+        double t = this.values[piv][piv];
+        double fact = (b/t);
+        for (int i = 0; i < this.values[piv].length; i++) {
+            this.values[sub][i] = this.values[sub][i] - (this.values[piv][i] * fact);
+        }
+    };
 }

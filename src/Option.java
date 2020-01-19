@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.function.ToLongBiFunction;
 
+/*REMEMBER: double[][] is ONLY for in-method use!*/
 
 public abstract class Option {
     public abstract void call();
@@ -61,10 +63,12 @@ class MatrixMultiply extends Option{
         double[][] resVal = new double[multA.length][multB[0].length];
 
         for(int i = 0; i < resVal.length; i++){
-            for(int j = 0; j < resVal.length; j++){
-                resVal[i][j] = cij(i,j);
+            for(int j = 0; j < resVal[0].length; j++){
+                resVal[i][j] = cij(i,j, multA, multB);
             }
         }
+
+        /*Outer Product method*/
 
         System.out.println("Result:");
 
@@ -75,18 +79,34 @@ class MatrixMultiply extends Option{
         back();
     }
 
-    private double cij(int i, int j){
+    private static double cij(int i, int j, double[][] multA, double[][] multB){
         double cumulative = 0;
-        for(int k = 0; k < this.multA[0].length; k++){
+        for(int k = 0; k < multA[0].length; k++){
             cumulative += multA[i][k] * multB[k][j];
         }
         return cumulative;
+    }
+
+    public static Matrix quiet(Matrix A, Matrix B){
+        double[][] multA = A.values;
+
+        double[][] multB = B.values;
+
+        double[][] resVal = new double[multA.length][multB[0].length];
+
+        for(int i = 0; i < resVal.length; i++){
+            for(int j = 0; j < resVal[0].length; j++){
+                resVal[i][j] = cij(i, j, multA, multB);
+            }
+        }
+
+        return new Matrix(resVal);
     }
 }
 
 class MatrixAdd extends Option{
     public String name(){
-        return String.format("Add to Matrix %s", Tool.current.label);
+        return "Add to Matrix";
     }
     public void call() {
         ArrayList<Matrix> addable = new ArrayList<>();
@@ -155,7 +175,7 @@ class MatrixSubtract extends Option{
 
 class MatrixScalar extends Option{
     public String name(){
-        return String.format("Multiply Matrix %s by Scalar", Tool.current.label);
+        return "Multiply Matrix by Scalar";
     }
     public void call() {
 
@@ -281,6 +301,71 @@ class Transpose extends Option{
         result.view();
         result.save();
 
+        back();
+    }
+
+    public static Matrix quiet(Matrix m){
+        double[][] resValue = new double[Tool.current.colNum][Tool.current.rowNum];
+
+        for (int i = 0; i < Tool.current.rowNum; i++) {
+            for (int j = 0; j < Tool.current.colNum; j++) {
+                resValue[j][i] = Tool.current.values[i][j];
+            }
+        }
+
+        return new Matrix(resValue);
+    }
+}
+
+class UpperTri extends Option{
+    @Override
+    public String name() {
+        return "Calculate Upper Triangular";
+    }
+
+    @Override
+    public void call() {
+        Matrix result = new Matrix(Tool.current.values);
+        for (int piv = 0; piv < result.rowNum; piv++) {
+            for (int subRow = piv + 1; subRow < result.colNum; subRow++) {
+                result.rowSub(piv, subRow);
+            }
+        }
+
+        System.out.printf("%nUpper Triangular for Matrix %s:%n", Tool.current.label);
+
+        result.view();
+        result.save();
+
+        back();
+    }
+    public static Matrix quiet() {
+        Matrix result = new Matrix(Tool.current.values);
+        for (int piv = 0; piv < result.rowNum; piv++) {
+            for (int subRow = piv + 1; subRow < result.colNum; subRow++) {
+                result.rowSub(piv, subRow);
+            }
+        }
+        return result;
+    }
+}
+
+class Determinant extends Option{
+    @Override
+    public String name() {
+        return "Calculate Determinant";
+    }
+
+    @Override
+    public void call() {
+        Matrix u = UpperTri.quiet();
+
+        double d = 1;
+        for (int piv = 0; piv < u.rowNum; piv++) {
+            d = d * u.values[piv][piv];
+        }
+
+        System.out.printf("%nDeterminant of Matrix %s: %2f%n", Tool.current.label, d);
         back();
     }
 }
