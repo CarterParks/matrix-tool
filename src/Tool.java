@@ -24,7 +24,7 @@ public class Tool {
                 new View(),
                 new MatrixScalar(),
                 new Transpose(),
-                new exit()
+                new Exit()
         ));
 
         // Multiplying Matrices

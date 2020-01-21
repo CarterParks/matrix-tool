@@ -1,8 +1,6 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.function.ToLongBiFunction;
 
 /*REMEMBER: double[][] is ONLY for in-method use!*/
 
@@ -328,7 +326,7 @@ class UpperTri extends Option{
         Matrix result = new Matrix(Tool.current.values);
         for (int piv = 0; piv < result.rowNum; piv++) {
             for (int subRow = piv + 1; subRow < result.colNum; subRow++) {
-                result.rowSub(piv, subRow);
+                rowSub(result, piv, subRow);
             }
         }
 
@@ -339,11 +337,23 @@ class UpperTri extends Option{
 
         back();
     }
+
+    public static void rowSub(Matrix m, int pivCol, int subRow){
+        if(m.values[pivCol][pivCol] == 0)
+            System.out.println("Warning: Pivot is 0.");
+        double b = m.values[subRow][pivCol];
+        double t = m.values[pivCol][pivCol];
+        double fact = (b/t);
+        for (int i = 0; i < m.values[pivCol].length; i++) {
+            m.values[subRow][i] = m.values[subRow][i] - (m.values[pivCol][i] * fact);
+        }
+    }
+
     public static Matrix quiet() {
         Matrix result = new Matrix(Tool.current.values);
         for (int piv = 0; piv < result.rowNum; piv++) {
             for (int subRow = piv + 1; subRow < result.colNum; subRow++) {
-                result.rowSub(piv, subRow);
+                rowSub(result, piv, subRow);
             }
         }
         return result;
@@ -370,7 +380,7 @@ class Determinant extends Option{
     }
 }
 
-class exit extends Option{
+class Exit extends Option{
     public String name(){return "Exit";}
     public void call(){
         Tool.run = false;}

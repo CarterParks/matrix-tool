@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.function.ToLongBiFunction;
 
 public class Matrix {
     public double[][] values;
@@ -9,10 +11,24 @@ public class Matrix {
     Matrix(){
         Scanner sc = new Scanner(System.in);
 
+        handle:
         while(true){
             System.out.print("Input matrix label: ");
             label = sc.nextLine();
+
+            for(Matrix M : Tool.matrices){
+                if(label.equals(M.label)){
+                    System.out.printf("Do you want to overwrite Matrix %s? (Y|N) ", M.label);
+                    String opt = sc.nextLine();
+                    if (opt.equals("y") || opt.equals("Y")){
+                        Tool.matrices.remove(M);
+                        Tool.current = this;
+                        break;
+                    }else continue handle;
+                }
+            }
             if(label.length() > 0) break;
+
             System.out.println("Please input a label.");
         }
 
@@ -90,26 +106,27 @@ public class Matrix {
         }
     }
 
-    public double[] rowGrab(int idx){
-        return values[idx];
+//    public double[] rowGrab(int idx){
+//        return values[idx];
+//    }
+//
+//    public double[] columnGrab(int idx){
+//        double[] col = new double[values.length];
+//        for (int i = 0; i < values.length; i++) {
+//            col[i] = values[i][idx];
+//        }
+//        return col;
+//    }
+
+
+    public static Matrix identity(int s){
+        double[][] vals = new double[s][s];
+        for (double[] row: vals) Arrays.fill(row, 0 );
+        for (int i = 0; i < s; i++) vals[i][i] = 1;
+        return new Matrix(vals);
     }
 
-    public double[] columnGrab(int idx){
-        double[] col = new double[values.length];
-        for (int i = 0; i < values.length; i++) {
-            col[i] = values[i][idx];
-        }
-        return col;
+    public Matrix copy(){
+        return new Matrix(this.values);
     }
-
-    public void rowSub(int piv, int sub){
-        if(this.values[piv][piv] == 0)
-            System.out.println("Warning: Pivot is 0.");
-        double b = this.values[sub][piv];
-        double t = this.values[piv][piv];
-        double fact = (b/t);
-        for (int i = 0; i < this.values[piv].length; i++) {
-            this.values[sub][i] = this.values[sub][i] - (this.values[piv][i] * fact);
-        }
-    };
 }
