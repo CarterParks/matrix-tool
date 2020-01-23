@@ -1,2 +1,2 @@
 @ECHO OFF
-jar cfe matrix-tool.jar Tool *.class
+jar cfev matrix-tool.jar Tool *.class

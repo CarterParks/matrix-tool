@@ -2,28 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59db56f1-ebc3-40dc-8a59-c54332bd4ab1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/CrossProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/CrossProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Determinant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Determinant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Matrix.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixAdd.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixAdd.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixChoose.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixChoose.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixMultiply.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixMultiply.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixNew.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixNew.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixScalar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixScalar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/MatrixSubtract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/MatrixSubtract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Option.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Option.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Tool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Tool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/Transpose.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/Transpose.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/UpperTri.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/UpperTri.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/exit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/exit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/jar-build.bat" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/jar-build.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/matrix-tool/matrix-tool.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/matrix-tool/matrix-tool.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Option.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/matico.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,22 +90,22 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1367" height="215" key="GridCell.Tab.0.bottom" timestamp="1579641758899">
+    <state width="1367" height="215" key="GridCell.Tab.0.bottom" timestamp="1579795129833">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1579641758899" />
-    <state width="1367" height="215" key="GridCell.Tab.0.center" timestamp="1579641758899">
+    <state width="1367" height="215" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1579795129833" />
+    <state width="1367" height="215" key="GridCell.Tab.0.center" timestamp="1579795129832">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1579641758899" />
-    <state width="1367" height="215" key="GridCell.Tab.0.left" timestamp="1579641758899">
+    <state width="1367" height="215" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1579795129832" />
+    <state width="1367" height="215" key="GridCell.Tab.0.left" timestamp="1579795129832">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1579641758899" />
-    <state width="1367" height="215" key="GridCell.Tab.0.right" timestamp="1579641758899">
+    <state width="1367" height="215" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1579795129832" />
+    <state width="1367" height="215" key="GridCell.Tab.0.right" timestamp="1579795129832">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1367" height="215" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1579641758899" />
+    <state width="1367" height="215" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1579795129832" />
     <state width="1367" height="226" key="GridCell.Tab.1.bottom" timestamp="1579443799909">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

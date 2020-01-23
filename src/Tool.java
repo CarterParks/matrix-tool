@@ -47,10 +47,13 @@ public class Tool {
         //Square Matrix
         if(current.rowNum == current.colNum){
             options.add(4, new Determinant());
-            options.add(4, new UpperTri());
         }
 
-        // Multiple Matrices
+        //Augmented Matrix
+        if(current.colNum == current.rowNum + 1) {
+            options.add(4, new UpperTri());
+        }
+        // Multiple
         if(matrices.size()>1){
             options.add(2, new MatrixSubtract());
             options.add(2, new MatrixAdd());
