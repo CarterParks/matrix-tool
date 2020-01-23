@@ -23,3 +23,5 @@ All operations are performed with the current Matrix as the first term in the op
 * Vector dot product
 ## Future software tweaks
 * Separate option classes and feature methods
+* Consolidate quiet methods by putting a private 'math'-od in classes with quiet method
+* Replace quiet()s with crunch()s? Vice-versa?

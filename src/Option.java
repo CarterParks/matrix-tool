@@ -3,6 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*REMEMBER: double[][] is ONLY for in-method use!*/
+//TODO: Turn quiet()s into crucnch()s
 
 public abstract class Option {
     public abstract void call();
@@ -36,7 +37,6 @@ class MatrixNew extends Option{
 }
 
 class MatrixAdd extends Option{
-
     public String name(){
         return "Add to Matrix";
     }
@@ -69,8 +69,8 @@ class MatrixAdd extends Option{
         back();
     }
 }
-class MatrixSubtract extends Option{
 
+class MatrixSubtract extends Option{
     public String name(){
         return String.format("Subtract from Matrix %s", Tool.current.label);
     }
@@ -82,7 +82,6 @@ class MatrixSubtract extends Option{
         }
 
         System.out.printf("%nSubtract from Matrix %s:%n", Tool.current.label);
-        //TODO: Bad Input handling
         for (int i = 0; i < subbable.size(); i++){
             System.out.printf("    (%d) Matrix %s%n", i + 1, subbable.get(i).label);
         }
@@ -104,6 +103,7 @@ class MatrixSubtract extends Option{
         back();
     }
 }
+
 class MatrixScalar extends Option{
 
     public String name(){
@@ -139,8 +139,8 @@ class MatrixScalar extends Option{
         back();
     }
 }
-class View extends Option{
 
+class View extends Option{
     @Override
     public String name() {
         return String.format("View Matrix %s", Tool.current.label);
@@ -151,8 +151,8 @@ class View extends Option{
         Tool.current.view();
         back();
     }
-
 }
+
 class CrossProduct extends Option{
 
     @Override
@@ -256,31 +256,9 @@ class UpperTri extends Option{
 
     @Override
     public void call() {
-//        for (int piv = 0; piv < result.rowNum; piv++) {
-//            for (int subRow = piv + 1; subRow < result.colNum; subRow++) {
-//                rowSub(result, piv, subRow);
-//            }
-//        }
-        Matrix A = Tool.current.copy();
-        ArrayList<Matrix> Es = new ArrayList<>();
-        for (int piv = 0; piv < A.rowNum; piv++) {
-            Matrix E = Matrix.identity(A.rowNum);
-            for (int i = piv + 1; i < A.rowNum; i++) {
-                E.values[i][piv] = -(A.values[i][piv]/A.values[piv][piv]);
-            }
-            A = MatrixMultiply.quiet(E, A);
-            System.out.printf("E%d%n", piv);
-            E.view();
-            Es.add(0, E);
-        }
-        Matrix E = MatrixMultiply.series(Es);
-
-        System.out.println("E");
-        E.view();
-
         System.out.printf("%nUpper Triangular for Matrix %s:%n", Tool.current.label);
 
-        Matrix result = MatrixMultiply.quiet(E, Tool.current);
+        Matrix result = crunch(Tool.current);
 
         result.view();
         result.save();
@@ -288,25 +266,41 @@ class UpperTri extends Option{
         back();
     }
 
-    public static void rowSub(Matrix m, int pivCol, int subRow){
-        if(m.values[pivCol][pivCol] == 0)
-            System.out.println("Warning: Pivot is 0.");
-        double b = m.values[subRow][pivCol];
-        double t = m.values[pivCol][pivCol];
-        double fact = (b/t);
-        for (int i = 0; i < m.values[pivCol].length; i++) {
-            m.values[subRow][i] = m.values[subRow][i] - (m.values[pivCol][i] * fact);
-        }
+    static Matrix crunch(Matrix M){
+        Matrix E = Elimination.crunch(M);
+        return MatrixMultiply.crunch(E, M);
+    }
+}
+
+class Elimination extends Option{
+    @Override
+    public String name() {
+        return "Get Gaussian Elimination Matrix";
     }
 
-    public static Matrix quiet() {
-        Matrix result = new Matrix(Tool.current.values);
-        for (int piv = 0; piv < result.rowNum; piv++) {
-            for (int subRow = piv + 1; subRow < result.colNum; subRow++) {
-                rowSub(result, piv, subRow);
+    @Override
+    public void call() {
+        System.out.printf("%nElimination Matrix for Matrix %s:%n", Tool.current.label);
+
+        Matrix result = crunch(Tool.current);
+        result.view();
+        result.save();
+
+        back();
+    }
+
+    public static Matrix crunch(Matrix m) {
+        Matrix A = m.copy();
+        ArrayList<Matrix> Es = new ArrayList<>();
+        for (int piv = 0; piv < A.rowNum; piv++) {
+            Matrix e = Matrix.identity(A.rowNum);
+            for (int i = piv + 1; i < A.rowNum; i++) {
+                e.values[i][piv] = -(A.values[i][piv]/A.values[piv][piv]);
             }
+            A = MatrixMultiply.crunch(e, A);
+            Es.add(0, e);
         }
-        return result;
+        return MatrixMultiply.list(Es);
     }
 
 }
@@ -318,18 +312,90 @@ class Determinant extends Option{
 
     @Override
     public void call() {
-        Matrix u = UpperTri.quiet();
-
-        double d = 1;
-        for (int piv = 0; piv < u.rowNum; piv++) {
-            d = d * u.values[piv][piv];
-        }
-
-        System.out.printf("%nDeterminant of Matrix %s: %2f%n", Tool.current.label, d);
+        System.out.printf("%nDeterminant of Matrix %s: %.2f%n", Tool.current.label, crunch(Tool.current));
         back();
     }
 
+    private static double crunch(Matrix m){
+        double d = 1;
+        Matrix u = UpperTri.crunch(m);
+        for (int piv = 0; piv < u.rowNum; piv++) {
+            d = d * u.values[piv][piv];
+        }
+        return d;
+    }
 }
+
+class Invert extends Option{
+    @Override
+    public String name() {
+        return String.format("Invert Matrix %s", Tool.current.label);
+    }
+
+    @Override
+    public void call() {
+        /*TODO: Display text*/
+        Matrix result = crunch(Tool.current);
+
+        result.view();
+        result.save();
+
+        back();
+    }
+
+    public static Matrix crunch(Matrix m){
+        /*
+        Set the matrix (must be square) and append the identity matrix of the same dimension to it.
+        Reduce the left matrix to row echelon form using elementary row operations for the whole matrix (including the right one).
+        As a result you will get the inverse calculated on the right.
+        TODO: If a determinant of the main matrix is zero, inverse doesn't exist.
+        */
+        Matrix i = Matrix.identity(m.rowNum);
+        double[][] a = new double[m.rowNum][2 * m.colNum];
+
+        //Append Identity
+        for (int row = 0; row < m.rowNum; row++) {
+            if (m.colNum >= 0) System.arraycopy(a[row], 0, m.values[row], 0, m.colNum);
+            if (2 * m.colNum - m.colNum >= 0)
+                System.arraycopy(i.values[row], m.colNum, m.values[row], m.colNum, 2 * m.colNum - m.colNum);
+        }
+
+        //Gaussian Elimination
+        Matrix A = new Matrix(a);
+        A = UpperTri.crunch(A);
+
+        //Copy right
+        double[][] r = new double[m.rowNum][m.colNum];
+        for (int row = 0; row < m.rowNum; row++) {
+            if (m.colNum >= 0) System.arraycopy(A.values[row], 0, r[row], m.colNum, m.colNum);
+        }
+
+        return new Matrix(r);
+    }
+}
+
+class LowerTri extends Option{
+    @Override
+    public String name() {
+        return String.format("Get Lower Triangular of Matrix %s", Tool.current.label);
+    }
+
+    @Override
+    public void call() {
+        //TODO: Display text
+        Matrix result = crunch(Tool.current);
+
+        result.view();
+        result.save();
+
+        back();
+    }
+
+    public static Matrix crunch(Matrix m){
+        return Invert.crunch(Elimination.crunch(m));
+    }
+}
+
 class MatrixMultiply extends Option{
     double[][] multA;
     double[][] multB;
@@ -355,13 +421,12 @@ class MatrixMultiply extends Option{
 
         double[][] resVal = new double[multA.length][multB[0].length];
 
+        //Calculate entry by entry. Outer Product method?
         for(int i = 0; i < resVal.length; i++){
             for(int j = 0; j < resVal[0].length; j++){
                 resVal[i][j] = cij(i,j, multA, multB);
             }
         }
-
-        /*Outer Product method*/
 
         System.out.println("Result:");
 
@@ -380,7 +445,7 @@ class MatrixMultiply extends Option{
         return cumulative;
     }
 
-    public static Matrix quiet(Matrix A, Matrix B){
+    public static Matrix crunch(Matrix A, Matrix B){
         double[][] multA = A.values;
 
         double[][] multB = B.values;
@@ -396,12 +461,10 @@ class MatrixMultiply extends Option{
         return new Matrix(resVal);
     }
 
-    public static Matrix series(ArrayList<Matrix> list){
+    public static Matrix list(ArrayList<Matrix> list){
         Matrix E = list.get(0);
         for (int i = 1; i < list.size(); i++) {
-            E = MatrixMultiply.quiet(E, list.get(i));
-            System.out.printf("e%d%n", i);
-            E.view();
+            E = MatrixMultiply.crunch(E, list.get(i));
         }
         return E;
     }

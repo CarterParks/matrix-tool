@@ -14,10 +14,10 @@ public class Tool {
         matrices.add(new Matrix());
         System.out.println();
         current = matrices.get(0);
-        menu();
+        mainMenu();
     }
 
-    static void menu(){
+    static void mainMenu(){
         // Default Options
         ArrayList<Option> options = new ArrayList<>(Arrays.asList(
                 new MatrixNew(),
@@ -46,14 +46,20 @@ public class Tool {
 
         //Square Matrix
         if(current.rowNum == current.colNum){
+            options.add(4, new Elimination());
             options.add(4, new Determinant());
-        }
+            options.add(4, new UpperTri());
 
         //Augmented Matrix
-        if(current.colNum == current.rowNum + 1) {
+        }else if(current.colNum == current.rowNum + 1) {
+            options.add(4, new Elimination());
             options.add(4, new UpperTri());
         }
-        // Multiple
+
+        //TODO: Implement Invert, LowerTri
+        //TODO: Change names to indicate operations on augmented matrix
+
+        // Multiple Matricies
         if(matrices.size()>1){
             options.add(2, new MatrixSubtract());
             options.add(2, new MatrixAdd());
@@ -68,7 +74,7 @@ public class Tool {
         options.get(choice(options, "Select Option: ")).call();
 
         if(run){
-            menu();
+            mainMenu();
         }
     }
 
