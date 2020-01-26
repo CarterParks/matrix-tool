@@ -48,6 +48,8 @@ public class Tool {
         if(current.rowNum == current.colNum){
             options.add(4, new Elimination());
             options.add(4, new Determinant());
+            options.add(4, new Invert());
+            options.add(4, new LowerTri());
             options.add(4, new UpperTri());
 
         //Augmented Matrix
@@ -56,7 +58,6 @@ public class Tool {
             options.add(4, new UpperTri());
         }
 
-        //TODO: Implement Invert, LowerTri
         //TODO: Change names to indicate operations on augmented matrix
 
         // Multiple Matricies

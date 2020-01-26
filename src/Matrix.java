@@ -57,9 +57,8 @@ public class Matrix {
         for(int r = 0; r < rowNum; r++){
             String[] inputs;
             double[] outs = new double[colNum];
+			System.out.println("Input Matrix: ");	
             while(true){
-                if(r == 0) System.out.print("Input row 1, separated by spaces: ");
-                else System.out.printf("Input row %d: ", r + 1);
                 inputs = new Scanner(System.in).nextLine().split(" ");
                 try {
                     for(int i = 0; i < colNum; i++){

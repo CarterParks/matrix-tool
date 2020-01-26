@@ -122,15 +122,8 @@ class MatrixScalar extends Option{
             }
 
         }
-        double[][] scalarReturn = new double[Tool.current.rowNum][Tool.current.colNum];
-
-        for (int rowN = 0; rowN < Tool.current.rowNum; rowN++) {
-            for (int colN = 0; colN < Tool.current.colNum; colN++) {
-                 scalarReturn[rowN][colN] = Tool.current.values[rowN][colN] * scalar;
-            }
-        }
-
-        Matrix result = new Matrix(scalarReturn);
+        
+        Matrix result = crunch(scalar, Tool.current);
 
         System.out.println("Result:");
         result.view();
@@ -138,6 +131,17 @@ class MatrixScalar extends Option{
 
         back();
     }
+    
+    public static Matrix crunch(double scalar, Matrix m){
+		double[][] scalarReturn = new double[m.rowNum][m.colNum];
+
+        for (int rowN = 0; rowN < m.rowNum; rowN++) {
+            for (int colN = 0; colN < m.colNum; colN++) {
+                 scalarReturn[rowN][colN] = m.values[rowN][colN] * scalar;
+            }
+        }
+        return new Matrix(scalarReturn);
+	}
 }
 
 class View extends Option{
@@ -209,6 +213,7 @@ class CrossProduct extends Option{
     }
 
 }
+
 class Transpose extends Option{
 
     @Override
@@ -217,23 +222,24 @@ class Transpose extends Option{
     }
     @Override
     public void call() {
-        System.out.println();
-
-        double[][] resValue = new double[Tool.current.colNum][Tool.current.rowNum];
-
-        for (int i = 0; i < Tool.current.rowNum; i++) {
-            for (int j = 0; j < Tool.current.colNum; j++) {
-                resValue[j][i] = Tool.current.values[i][j];
-            }
-        }
-
-        System.out.printf("Matrix %s Transposed:%n", Tool.current.label);
-        Matrix result = new Matrix(resValue);
+        System.out.printf("%nMatrix %s Transposed:%n", Tool.current.label);
+        Matrix result = crunch(Tool.current);
         result.view();
         result.save();
 
         back();
     }
+    
+    public static Matrix crunch(Matrix m){
+		double[][] resValue = new double[m.colNum][m.rowNum];
+
+        for (int i = 0; i < m.rowNum; i++) {
+            for (int j = 0; j < m.colNum; j++) {
+                resValue[j][i] = m.values[i][j];
+            }
+        }
+        return new Matrix(resValue);
+	}
 
     public static Matrix quiet(Matrix m){
         double[][] resValue = new double[Tool.current.colNum][Tool.current.rowNum];
@@ -248,6 +254,7 @@ class Transpose extends Option{
     }
 
 }
+
 class UpperTri extends Option{
     @Override
     public String name() {
@@ -304,6 +311,7 @@ class Elimination extends Option{
     }
 
 }
+
 class Determinant extends Option{
     @Override
     public String name() {
@@ -316,7 +324,7 @@ class Determinant extends Option{
         back();
     }
 
-    private static double crunch(Matrix m){
+    public static double crunch(Matrix m){
         double d = 1;
         Matrix u = UpperTri.crunch(m);
         for (int piv = 0; piv < u.rowNum; piv++) {
@@ -334,7 +342,7 @@ class Invert extends Option{
 
     @Override
     public void call() {
-        /*TODO: Display text*/
+        System.out.printf("%nInverse of Matrix:%n");
         Matrix result = crunch(Tool.current);
 
         result.view();
@@ -344,34 +352,43 @@ class Invert extends Option{
     }
 
     public static Matrix crunch(Matrix m){
-        /*
-        Set the matrix (must be square) and append the identity matrix of the same dimension to it.
-        Reduce the left matrix to row echelon form using elementary row operations for the whole matrix (including the right one).
-        As a result you will get the inverse calculated on the right.
-        TODO: If a determinant of the main matrix is zero, inverse doesn't exist.
-        */
-        Matrix i = Matrix.identity(m.rowNum);
-        double[][] a = new double[m.rowNum][2 * m.colNum];
+		double[][] values = m.values;
+		double determinant;
 
-        //Append Identity
-        for (int row = 0; row < m.rowNum; row++) {
-            if (m.colNum >= 0) System.arraycopy(a[row], 0, m.values[row], 0, m.colNum);
-            if (2 * m.colNum - m.colNum >= 0)
-                System.arraycopy(i.values[row], m.colNum, m.values[row], m.colNum, 2 * m.colNum - m.colNum);
-        }
-
-        //Gaussian Elimination
-        Matrix A = new Matrix(a);
-        A = UpperTri.crunch(A);
-
-        //Copy right
-        double[][] r = new double[m.rowNum][m.colNum];
-        for (int row = 0; row < m.rowNum; row++) {
-            if (m.colNum >= 0) System.arraycopy(A.values[row], 0, r[row], m.colNum, m.colNum);
-        }
-
-        return new Matrix(r);
-    }
+		//finding determinant
+		determinant = Determinant.crunch(m);
+		
+		Matrix I = cofactor(m);
+		I = Transpose.crunch(I);
+		I = MatrixScalar.crunch(determinant, I);
+		
+		return I;
+	}
+	
+	private static Matrix cofactor(Matrix m){
+		Matrix cof = new Matrix(new double[m.rowNum][m.colNum]);
+		int sign = 1;
+		for (int row = 0; row < m.rowNum; row++){
+			for (int col = 0; col < m.colNum; col++){
+				cof.values[row][col] = minor(m, row, col) * sign;
+				sign = -sign;
+		}}
+		
+		return cof;
+	}
+	
+	private static double minor(Matrix m, int r, int c){
+		double[][] val = new double[m.rowNum - 1][m.colNum - 1]; 
+		for (int row = 0; row < m.rowNum; row++){
+			for (int col = 0; col < m.colNum; col++){
+				if(row == r) continue;
+				if(col == c) continue;
+				
+				val[row][col] = m.values[row][col];
+		}}
+		
+		return Determinant.crunch(new Matrix(val));
+	}
 }
 
 class LowerTri extends Option{
