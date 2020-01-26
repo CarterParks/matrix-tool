@@ -28,7 +28,7 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
+current_page=2
 FILE_NAME_0=1869;Java;0;EUTF-8;1;1;0;%2Fhome%2Fcarter%2FSoftware%2Fmatrix-tool%2Fsrc%2FMatrix.java;0;4
 FILE_NAME_1=1437;Java;0;EUTF-8;1;1;0;%2Fhome%2Fcarter%2FSoftware%2Fmatrix-tool%2Fsrc%2FTool.java;0;4
 FILE_NAME_2=10894;Java;0;EUTF-8;1;1;0;%2Fhome%2Fcarter%2FSoftware%2Fmatrix-tool%2Fsrc%2FOption.java;0;4
@@ -40,10 +40,3 @@ last_dir=/home/carter
 EX_01_LB=
 EX_01_CM=
 EX_01_WD=
-NF_00_LB=_Make
-NF_00_CM=make
-NF_00_WD=
-JavaFT_01_LB=Build and Run
-JavaFT_01_CM=make && make run
-JavaFT_01_WD=
-filetypes=Java;

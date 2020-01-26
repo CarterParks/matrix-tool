@@ -1,5 +1,7 @@
 all: compile jar
 
+full: compile jar run
+
 compile: src/*.java
 	javac -d out $?
 

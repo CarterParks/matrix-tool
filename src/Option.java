@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Arrays;
 
 /*REMEMBER: double[][] is ONLY for in-method use!*/
 //TODO: Turn quiet()s into crucnch()s
@@ -47,7 +48,7 @@ class MatrixAdd extends Option{
                 addable.add(m);
         }
 
-        System.out.printf("%nAdd to Matrix %s:%n", Tool.current.label);
+        System.out.printf("%nAdd to Matrix");
         for (int i = 0; i < addable.size(); i++){
             System.out.printf("    (%d) Matrix %s%n", i + 1, addable.get(i).label);
         }
@@ -81,7 +82,7 @@ class MatrixSubtract extends Option{
                 subbable.add(m);
         }
 
-        System.out.printf("%nSubtract from Matrix %s:%n", Tool.current.label);
+        System.out.printf("%nSubtract from Matrix");
         for (int i = 0; i < subbable.size(); i++){
             System.out.printf("    (%d) Matrix %s%n", i + 1, subbable.get(i).label);
         }
@@ -263,7 +264,7 @@ class UpperTri extends Option{
 
     @Override
     public void call() {
-        System.out.printf("%nUpper Triangular for Matrix %s:%n", Tool.current.label);
+        System.out.printf("%nUpper Triangular for Matrix");
 
         Matrix result = crunch(Tool.current);
 
@@ -282,13 +283,15 @@ class UpperTri extends Option{
 class Elimination extends Option{
     @Override
     public String name() {
-        return "Get Gaussian Elimination Matrix";
+        return "Elimination Matrix";
     }
 
     @Override
     public void call() {
-        System.out.printf("%nElimination Matrix for Matrix %s:%n", Tool.current.label);
+        System.out.printf("%nElimination Matrix for Matrix");
 
+        //TODO: Individual Elim Matr
+        
         Matrix result = crunch(Tool.current);
         result.view();
         result.save();
@@ -297,7 +300,11 @@ class Elimination extends Option{
     }
 
     public static Matrix crunch(Matrix m) {
-        Matrix A = m.copy();
+        return MatrixMultiply.list(elimList(m));
+    }
+    
+	public static ArrayList<Matrix> elimList(Matrix m){
+		Matrix A = m.copy();
         ArrayList<Matrix> Es = new ArrayList<>();
         for (int piv = 0; piv < A.rowNum; piv++) {
             Matrix e = Matrix.identity(A.rowNum);
@@ -307,8 +314,8 @@ class Elimination extends Option{
             A = MatrixMultiply.crunch(e, A);
             Es.add(0, e);
         }
-        return MatrixMultiply.list(Es);
-    }
+        return Es;
+	}
 
 }
 
@@ -342,53 +349,22 @@ class Invert extends Option{
 
     @Override
     public void call() {
-        System.out.printf("%nInverse of Matrix:%n");
-        Matrix result = crunch(Tool.current);
+		
+        //System.out.printf("%nInverse of Matrix:%n");
+        //Matrix result = crunch(Tool.current);
 
-        result.view();
-        result.save();
-
+        //result.view();
+        //result.save();
+		
+		System.out.printf("%nUnder Construction.%n");
+		
         back();
     }
 
     public static Matrix crunch(Matrix m){
-		double[][] values = m.values;
-		double determinant;
-
-		//finding determinant
-		determinant = Determinant.crunch(m);
-		
-		Matrix I = cofactor(m);
-		I = Transpose.crunch(I);
-		I = MatrixScalar.crunch(determinant, I);
-		
-		return I;
+		return null;
 	}
 	
-	private static Matrix cofactor(Matrix m){
-		Matrix cof = new Matrix(new double[m.rowNum][m.colNum]);
-		int sign = 1;
-		for (int row = 0; row < m.rowNum; row++){
-			for (int col = 0; col < m.colNum; col++){
-				cof.values[row][col] = minor(m, row, col) * sign;
-				sign = -sign;
-		}}
-		
-		return cof;
-	}
-	
-	private static double minor(Matrix m, int r, int c){
-		double[][] val = new double[m.rowNum - 1][m.colNum - 1]; 
-		for (int row = 0; row < m.rowNum; row++){
-			for (int col = 0; col < m.colNum; col++){
-				if(row == r) continue;
-				if(col == c) continue;
-				
-				val[row][col] = m.values[row][col];
-		}}
-		
-		return Determinant.crunch(new Matrix(val));
-	}
 }
 
 class LowerTri extends Option{

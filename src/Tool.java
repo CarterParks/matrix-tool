@@ -11,7 +11,11 @@ public class Tool {
 
     Tool(){
         System.out.printf("=====[ matrix-tool v1.2 ]=====%n%n");
-        matrices.add(new Matrix());
+        Matrix first = new Matrix(new double[][]{{3,0,2},{2,0,-2},{0,1,1}});
+        first.label = "first";
+        first.view();
+        matrices.add(first);
+        //matricies.add(new Matrix())
         System.out.println();
         current = matrices.get(0);
         mainMenu();
