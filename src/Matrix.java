@@ -53,11 +53,10 @@ public class Matrix {
         }
 
         values = new double[rowNum][colNum];
-
+		System.out.println("Input Matrix: ");	
         for(int r = 0; r < rowNum; r++){
             String[] inputs;
             double[] outs = new double[colNum];
-			System.out.println("Input Matrix: ");	
             while(true){
                 inputs = new Scanner(System.in).nextLine().split(" ");
                 try {
