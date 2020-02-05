@@ -21,6 +21,7 @@ All operations are performed with the current Matrix as the first term in the op
 * Lower Triangular
 * Read .csv or other data sets
 * Vector dot product
+* Span
 ## Future software tweaks
 * Remove menu, and command system
 * Separate option classes and feature methods

@@ -288,7 +288,7 @@ class Elimination extends Option{
 
     @Override
     public void call() {
-        System.out.printf("%nElimination Matrix for Matrix");
+        System.out.printf("%nElimination Matrix%n");
 
         //TODO: Individual Elim Matr
         
