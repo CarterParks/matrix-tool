@@ -48,7 +48,7 @@ class MatrixAdd extends Option{
                 addable.add(m);
         }
 
-        System.out.printf("%nAdd to Matrix");
+        System.out.printf("%nAdd To");
         for (int i = 0; i < addable.size(); i++){
             System.out.printf("    (%d) Matrix %s%n", i + 1, addable.get(i).label);
         }
@@ -73,7 +73,7 @@ class MatrixAdd extends Option{
 
 class MatrixSubtract extends Option{
     public String name(){
-        return String.format("Subtract from Matrix %s", Tool.current.label);
+        return "Subtract From";
     }
     public void call() {
         ArrayList<Matrix> subbable = new ArrayList<>();
@@ -108,7 +108,7 @@ class MatrixSubtract extends Option{
 class MatrixScalar extends Option{
 
     public String name(){
-        return "Multiply Matrix by Scalar";
+        return "Scalar Multiply";
     }
     public void call() {
 
@@ -148,7 +148,7 @@ class MatrixScalar extends Option{
 class View extends Option{
     @Override
     public String name() {
-        return String.format("View Matrix %s", Tool.current.label);
+        return String.format("View Matrix");
     }
     @Override
     public void call() {
@@ -219,7 +219,7 @@ class Transpose extends Option{
 
     @Override
     public String name() {
-        return String.format("Transpose Matrix %s", Tool.current.label);
+        return "Transpose";
     }
     @Override
     public void call() {
@@ -259,7 +259,7 @@ class Transpose extends Option{
 class UpperTri extends Option{
     @Override
     public String name() {
-        return "Calculate Upper Triangular";
+        return "Upper Triangular";
     }
 
     @Override
@@ -322,7 +322,7 @@ class Elimination extends Option{
 class Determinant extends Option{
     @Override
     public String name() {
-        return "Calculate Determinant";
+        return "Determinant";
     }
 
     @Override
@@ -344,7 +344,7 @@ class Determinant extends Option{
 class Invert extends Option{
     @Override
     public String name() {
-        return String.format("Invert Matrix %s", Tool.current.label);
+        return "Inverse";
     }
 
     @Override
@@ -370,7 +370,7 @@ class Invert extends Option{
 class LowerTri extends Option{
     @Override
     public String name() {
-        return String.format("Get Lower Triangular of Matrix %s", Tool.current.label);
+        return "Lower Triangular";
     }
 
     @Override
@@ -393,7 +393,7 @@ class MatrixMultiply extends Option{
     double[][] multA;
     double[][] multB;
     public String name(){
-        return String.format("Multiply Matrix %s by Matrix", Tool.current.label);
+        return String.format("Matrix Multiplication", Tool.current.label);
     }
     public void call() {
         ArrayList<Matrix> multable = new ArrayList<>();

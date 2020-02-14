@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.function.ToLongBiFunction;
 
 public class Matrix {
     public double[][] values;
@@ -54,7 +53,7 @@ public class Matrix {
 
         values = new double[rowNum][colNum];
 		System.out.println("Input Matrix: ");	
-        for(int r = 0; r < rowNum; r++){
+     x   for(int r = 0; r < rowNum; r++){
             String[] inputs;
             double[] outs = new double[colNum];
             while(true){
@@ -97,8 +96,27 @@ public class Matrix {
         System.out.print("Save new Matrix? (Y|N) ");
         String choice = new Scanner(System.in).nextLine();
         if(choice.equals("Y") || choice.equals("y")){
-            System.out.print("Input matrix label: ");
-            this.label = new Scanner(System.in).nextLine();
+			handle:
+	        while(true){
+	            System.out.print("Input matrix label: ");
+	            label = sc.nextLine();
+	
+	            for(Matrix M : Tool.matrices){
+	                if(label.equals(M.label)){
+	                    System.out.printf("Do you want to overwrite Matrix %s? (Y|N) ", M.label);
+	                    String opt = sc.nextLine();
+	                    if (opt.equals("y") || opt.equals("Y")){
+	                        Tool.matrices.remove(M);
+	                        Tool.current = this;
+	                        break;
+	                    }else continue handle;
+	                }
+	            }
+	            if(label.length() > 0) break;
+	
+	            System.out.println("Please input a label.");
+	        }
+        }
             Tool.matrices.add(this);
             System.out.printf("    Matrix %s Saved!%n", this.label);
         }

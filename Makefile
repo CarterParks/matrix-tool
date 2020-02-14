@@ -1,4 +1,4 @@
-all: compile jar
+build: compile jar
 
 full: compile jar run
 

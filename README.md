@@ -22,8 +22,15 @@ All operations are performed with the current Matrix as the first term in the op
 * Read .csv or other data sets
 * Vector dot product
 * Span
+* Multiply Matrices in series
+* Null and Left-Null space
+* Row Echelon (replace upper tri?), reduced row echelon
+* Linear independence
+* Find an basis
+* Is a subspace?
 ## Future software tweaks
-* Remove menu, and command system
+* Remove menu, add command system?
 * Separate option classes and feature methods
 * Consolidate quiet methods by putting a private 'math'-od in classes with quiet method
 * Replace quiet()s with crunch()s? Vice-versa?
+* Implement POP?
